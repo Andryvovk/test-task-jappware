@@ -1,0 +1,18 @@
+<div class="container"> 
+    <form  [formGroup]="addMemberForm">
+        <label for="firtName">First name</label>
+        <input type="text"
+               placeholder="firt name"
+               name="firstName"
+               formControlName="firstName">
+        <label for="lastName">Last name</label>
+        <input type="text"
+               placeholder="last name"
+               name="lastName"
+               formControlName="lastName">
+        <input type="button"
+               value="save"
+               [disabled]="addMemberForm.invalid"
+               (click)="addMember()">
+    </form>
+  </div>
