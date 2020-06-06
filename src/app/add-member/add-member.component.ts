@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Member } from 'src/interfaces/member-interface';
+import { LocalStorageService } from '../services/local-storage.service';
+import { MemberListComponent } from '../member-list/member-list.component';
+import { UIDService } from '../services/uid.service';
 
 @Component({
   selector: 'app-add-member',
@@ -10,11 +13,13 @@ import { Member } from 'src/interfaces/member-interface';
 export class AddMemberComponent implements OnInit {
   
   addMemberForm: FormGroup;
-  member: Member[] = [];
-  constructor(private fb: FormBuilder) { }
+  member: Member = new Member();
+  constructor(private fb: FormBuilder,
+              private ls: LocalStorageService,
+              private uid: UIDService) { }
 
   ngOnInit(): void {
-    this.initAddMemberForm()
+    this.initAddMemberForm();
   }
 
   initAddMemberForm() {
@@ -25,10 +30,11 @@ export class AddMemberComponent implements OnInit {
   }
 
   addMember() {
-    this.member['firstName'] = this.addMemberForm.value.firstName;
-    this.member['lastName'] = this.addMemberForm.value.lastName;
-    this.member['type'] = 'pending';
-    console.log(this.member)
+    this.member.uid = this.uid.createUID();
+    this.member.firstName = this.addMemberForm.value.firstName;
+    this.member.lastName = this.addMemberForm.value.lastName;
+    this.member.type = 'pending';
+    this.ls.setDataToStorage(this.member);
   }
 
 }
