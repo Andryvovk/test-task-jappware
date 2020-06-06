@@ -7,13 +7,15 @@ import { AddMemberComponent } from './add-member/add-member.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MemberModalComponent } from './member-list/member-modal/member-modal.component';
+import { ColorFontDirective } from './directives/color-font.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddMemberComponent,
     MemberListComponent,
-    MemberModalComponent
+    MemberModalComponent,
+    ColorFontDirective
   ],
   imports: [
     BrowserModule,

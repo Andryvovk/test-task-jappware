@@ -21,7 +21,6 @@ export class MemberListComponent implements OnInit {
   
   getMembers() {
     this.members = this.ls.getDataFromStorage();
-    console.log(this.members)
   }
 
   setBoxShadowColor(type) {

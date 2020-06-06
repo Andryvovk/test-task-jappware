@@ -3,7 +3,8 @@
         class="member"
         *ngFor='let member of members'
         [ngStyle]="{'box-shadow':'0 0 10px' + setBoxShadowColor(member.type)}"
-        (click)="showModal(member)">
+        (click)="showModal(member)"
+        appColorFont type={{member.type}}>
         <div class="info">
             <p>First name</p>
             <p>Last name</p>

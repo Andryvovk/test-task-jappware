@@ -4,6 +4,7 @@
         <div class="info">
             <p>First name : {{member.firstName}}</p>
             <p>Last name : {{member.lastName}}</p>
+            <p appColorFont type={{member.type}}>Type: {{member.type}}</p>
         </div>
         <button class="button"
                 *ngIf="member.type === 'pending' || member.type === 'deactivated'"
