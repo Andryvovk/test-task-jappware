@@ -16,16 +16,20 @@ export class MemberListComponent implements OnInit {
   isModalOpen: boolean = false;
 
   ngOnInit(): void {
-   this.members = this.ls.getDataFromStorage();
-   console.log(this.members)
+     this.getMembers();
+  }
+  
+  getMembers() {
+    this.members = this.ls.getDataFromStorage();
+    console.log(this.members)
   }
 
   setBoxShadowColor(type) {
     switch (type) {
       case 'pending':
-        return '#00FF7F'
+        return '#696969'
         break;
-      case 'full': 
+      case 'activated': 
         return '#3CB371'
         break;
       case 'deactivated':
@@ -41,8 +45,19 @@ export class MemberListComponent implements OnInit {
     this.isModalOpen = true;
   }
 
-  closeModal($event) {
+  closeModal() {
     this.isModalOpen = false
   }
 
+  activateDeactivateMember($event) {
+    const uid = $event.uid;
+    const type = $event.type;
+    this.ls.activateDeactivateMember(type, uid);
+    this.isModalOpen = false;
+  }
+  
+  deleteMember($event) {
+    this.ls.deleteMember($event);
+    this.isModalOpen = false;
+  }
 }

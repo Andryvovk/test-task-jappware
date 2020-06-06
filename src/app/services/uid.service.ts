@@ -11,15 +11,18 @@ export class UIDService {
   constructor(private ls: LocalStorageService) { }
 
   createUID(): number {
-    if(localStorage.getItem('memberList') === null) {
+    if(!localStorage.getItem('memberList')) {
+      console.log('Im here')
       return 1;
     } else {
+      console.log('ls is not empty')
       let members: Member[] = this.ls.getDataFromStorage();
       let UIDArray: number[] = []
       members.forEach(element => {
         UIDArray.push(element.uid);
       });
       let result = this.findMaxUID(UIDArray)
+      console.log(result++)
       return result++;
     }
   }

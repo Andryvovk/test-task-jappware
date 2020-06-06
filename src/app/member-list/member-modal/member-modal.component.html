@@ -1,18 +1,21 @@
 <div class="modal">
     <div class="modal-content">
-        <span class="close" (click)="onCloseModal()">&times;</span>
+        <span class="close" (click)="closeModal()">&times;</span>
         <div class="info">
             <p>First name : {{member.firstName}}</p>
             <p>Last name : {{member.lastName}}</p>
         </div>
         <button class="button"
-                *ngIf="member.type === 'pending'"
-                [style.background-color]="'#3CB371'">Activate</button>
+                *ngIf="member.type === 'pending' || member.type === 'deactivated'"
+                [style.background-color]="'#3CB371'"
+                (click)="activateDeactivateMember()">Activate</button>
         <button class="button"
                 *ngIf="member.type === 'activated'"
                 [style.background-color]="'#00FF7F'"
+                (click)="activateDeactivateMember()"
                 >Deactivate</button>
         <button class="button"
-                [style.background-color]="'#ff1919'">Delete</button>
+                [style.background-color]="'#ff1919'"
+                (click)="deleteMember(member.uid)">Delete</button>
     </div>
 </div>

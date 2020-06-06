@@ -17,4 +17,6 @@
 <app-member-modal
                  *ngIf="isModalOpen"
                  [member]='member'
-                 (onClose)=closeModal($event)></app-member-modal>
+                 (onClose)=closeModal()
+                 (onActivateDeactivate)=activateDeactivateMember($event)
+                 (onDelete)=deleteMember($event)></app-member-modal>

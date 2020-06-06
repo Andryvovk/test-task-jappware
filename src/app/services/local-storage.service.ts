@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Member } from 'src/interfaces/member-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +8,49 @@ export class LocalStorageService {
 
   constructor() { }
 
+  membersArr: Member[] = [];
+
   getDataFromStorage() {
      const members = JSON.parse(localStorage.getItem('memberList')) || [];
+     this.membersArr = members;
      return members;
   }
 
   setDataToStorage(member) {
-    let membersArr = []
-    membersArr = this.getDataFromStorage();
-    membersArr.push(member);
-    localStorage.setItem('memberList', JSON.stringify(membersArr));
-    
+    this.membersArr = this.getDataFromStorage();
+    this.membersArr.push(member);
+    localStorage.setItem('memberList', JSON.stringify(this.membersArr));
+  }
+
+  activateDeactivateMember(type, uid) {
+    this.membersArr.forEach((el) => {
+      console.log(uid)
+        if (el.uid === uid ) {
+          console.log(el.type)
+          switch (type) {
+            case 'pending':
+              el.type = 'activated'
+              break;
+            case 'activated': 
+              el.type = 'deactivated'
+              break;
+            case 'deactivated': 
+              el.type = 'activated'
+              break;
+            default:
+              break;
+          }
+        }
+    })
+    localStorage.setItem('memberList', JSON.stringify(this.membersArr));
+  }
+
+  deleteMember(uid) {
+    this.membersArr.forEach((el, i) => {
+      if (el.uid === uid) {
+        this.membersArr.splice(i, 1)
+      }
+    });
+    localStorage.setItem('memberList', JSON.stringify(this.membersArr))
   }
 }

@@ -33,6 +33,7 @@ export class AddMemberComponent implements OnInit {
 
   addMember() {
     this.member.uid = this.uid.createUID();
+    console.log(this.uid.createUID())
     this.member.firstName = this.addMemberForm.value.firstName;
     this.member.lastName = this.addMemberForm.value.lastName;
     this.member.type = 'pending';

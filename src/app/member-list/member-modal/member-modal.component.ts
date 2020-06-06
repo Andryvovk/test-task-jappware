@@ -9,12 +9,22 @@ import { Member } from 'src/interfaces/member-interface';
 export class MemberModalComponent implements OnInit {
   @Input() member: Member;
   @Output() onClose = new EventEmitter();
+  @Output() onActivateDeactivate = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
   
-  onCloseModal() {
+  closeModal() {
     this.onClose.emit();
+  }
+
+  activateDeactivateMember() {
+    this.onActivateDeactivate.emit(this.member)
+  }
+
+  deleteMember(uid) {
+    this.onDelete.emit(uid)
   }
 }
