@@ -4,6 +4,7 @@ import { Member } from 'src/interfaces/member-interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { MemberListComponent } from '../member-list/member-list.component';
 import { UIDService } from '../services/uid.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-member',
@@ -16,7 +17,8 @@ export class AddMemberComponent implements OnInit {
   member: Member = new Member();
   constructor(private fb: FormBuilder,
               private ls: LocalStorageService,
-              private uid: UIDService) { }
+              private uid: UIDService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.initAddMemberForm();
@@ -35,6 +37,7 @@ export class AddMemberComponent implements OnInit {
     this.member.lastName = this.addMemberForm.value.lastName;
     this.member.type = 'pending';
     this.ls.setDataToStorage(this.member);
+    this.router.navigate(['member-list'])
   }
 
 }

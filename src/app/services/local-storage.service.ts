@@ -16,6 +16,7 @@ export class LocalStorageService {
     let membersArr = []
     membersArr = this.getDataFromStorage();
     membersArr.push(member);
-    localStorage.setItem('memberList', JSON.stringify(membersArr))
+    localStorage.setItem('memberList', JSON.stringify(membersArr));
+    
   }
 }

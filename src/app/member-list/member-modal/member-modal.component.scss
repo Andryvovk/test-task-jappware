@@ -1,0 +1,39 @@
+.modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        font-size: 22px;
+        font-weight: bold;
+        border-radius: 5px;
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+          }          
+        .button {
+            width: 50%;
+            height: 50px;
+            bottom: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+    }
+  }
