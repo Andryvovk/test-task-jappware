@@ -8,6 +8,7 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MemberModalComponent } from './member-list/member-modal/member-modal.component';
 import { ColorFontDirective } from './directives/color-font.directive';
+import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ColorFontDirective } from './directives/color-font.directive';
     AddMemberComponent,
     MemberListComponent,
     MemberModalComponent,
-    ColorFontDirective
+    ColorFontDirective,
+    DragAndDropDirective
   ],
   imports: [
     BrowserModule,

@@ -10,9 +10,16 @@
                placeholder="last name"
                name="lastName"
                formControlName="lastName">
-        <input type="button"
-               value="save"
+        <button class="button"
                [disabled]="addMemberForm.invalid"
-               (click)="addMember()">
+               (click)="addMember()"
+               appDragAndDrop
+               (onFileDropped)="uploadFile($event)"
+               >Save or drop here
+               <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+              </button>
+              <div  class="files-list" *ngFor="let file of files;let i= index">
+                     <p> {{ file }} </p>
+                  </div>
     </form>
   </div>

@@ -59,4 +59,9 @@ export class MemberListComponent implements OnInit {
     this.ls.deleteMember($event);
     this.isModalOpen = false;
   }
+
+  clearList() {
+    this.ls.clearList();
+    this.getMembers();
+  }
 }

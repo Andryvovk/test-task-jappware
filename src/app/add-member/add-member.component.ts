@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Member } from 'src/interfaces/member-interface';
 import { LocalStorageService } from '../services/local-storage.service';
-import { MemberListComponent } from '../member-list/member-list.component';
 import { UIDService } from '../services/uid.service';
 import { Router } from '@angular/router';
 
@@ -15,6 +14,8 @@ export class AddMemberComponent implements OnInit {
   
   addMemberForm: FormGroup;
   member: Member = new Member();
+  files: File[] = [];
+
   constructor(private fb: FormBuilder,
               private ls: LocalStorageService,
               private uid: UIDService,
@@ -41,4 +42,31 @@ export class AddMemberComponent implements OnInit {
     this.router.navigate(['member-list'])
   }
 
+  uploadFile(event) {
+    for (let index = 0; index < event.length; index++) {
+      const element = event[index];
+      this.files.push(element.name);
+      this.readThis(element)
+      }
+    }
+
+  readThis(inputValue: any) : void {
+      var file:File = inputValue; 
+      var myReader:FileReader = new FileReader();
+      myReader.onload = e => getJson(parsed(e.target.result));
+      const getJson = (data) => {
+        this.addMemberFromJson(data);
+      }
+      const parsed = jsonText => JSON.parse(jsonText);
+      myReader.readAsText(file);
+    }
+
+  addMemberFromJson(data: Member[]) {
+      data.forEach(el => {
+        el.uid = this.uid.createUID();
+        el.type = 'pending'
+        this.ls.setDataToStorage(el);
+      })
+    }  
 }
+

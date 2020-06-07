@@ -53,4 +53,8 @@ export class LocalStorageService {
     });
     localStorage.setItem('memberList', JSON.stringify(this.membersArr))
   }
+
+  clearList() {
+    localStorage.removeItem('memberList');
+  }
 }

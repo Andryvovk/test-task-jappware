@@ -1,5 +1,12 @@
+
 <div class="container">
-    <div 
+    <span class="header">
+        <h3>Member List</h3>
+        <button (click)="clearList()"
+                *ngIf="members.length !== 0">Clear List</button>
+    </span>
+    <div class="member-items">
+        <div 
         class="member"
         *ngFor='let member of members'
         [ngStyle]="{'box-shadow':'0 0 10px' + setBoxShadowColor(member.type)}"
@@ -14,6 +21,8 @@
             <p>{{member.lastName}}</p>
         </div>
     </div>
+</div>
+
 </div>
 <app-member-modal
                  *ngIf="isModalOpen"
