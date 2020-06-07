@@ -1,42 +1,10 @@
-<!-- 
-<div class="container">
-    <span class="header">
+  <div class="container">
+    <div class="header">
         <h3>Member List</h3>
         <button (click)="clearList()"
-                *ngIf="members.length !== 0">Clear List</button>
-    </span>
-    <div class="member-items">
-        <div 
-        class="member"
-        *ngFor='let member of members'
-        [ngStyle]="{'box-shadow':'0 0 10px' + setBoxShadowColor(member.type)}"
-        (click)="showModal(member)"
-        appColorFont type={{member.type}}>
-        <div class="info">
-            <p>First name</p>
-            <p>Last name</p>
-        </div>
-        <div class="name">
-            <p>{{member.firstName}}</p>
-            <p>{{member.lastName}}</p>
-        </div>
+                *ngIf="members.length !== 0">Clear List</button>   
     </div>
-</div>
-
-</div>
-<app-member-modal
-                 *ngIf="isModalOpen"
-                 [member]='member'
-                 (onClose)=closeModal()
-                 (onActivateDeactivate)=activateDeactivateMember($event)
-                 (onDelete)=deleteMember($event)></app-member-modal> -->
-  
-<div class="container">
-    <span class="header">
-        <h3>Member List</h3>
-        <button (click)="clearList()"
-                *ngIf="members.length !== 0">Clear List</button>
-    </span>
+    <app-type-counter [membersCount]="membersCount"></app-type-counter>   
     <div class="member-container">
           <div class="members">
             <div class="member"

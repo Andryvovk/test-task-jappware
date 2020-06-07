@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../services/local-storage.service';
 import { Member } from 'src/interfaces/member-interface';
+import { TypeCounterService } from '../services/type-counter.service';
 
 @Component({
   selector: 'app-member-list',
@@ -9,19 +10,26 @@ import { Member } from 'src/interfaces/member-interface';
 })
 export class MemberListComponent implements OnInit {
 
-  constructor(private ls: LocalStorageService) { }
+  constructor(private ls: LocalStorageService,
+              private counter: TypeCounterService) { }
   
   members: Member[] = [];
   member: Member;
   isModalOpen: boolean = false;
+  membersCount = {};
 
   ngOnInit(): void {
      this.getMembers();
+     this.getNumberOfMembers();
   }
   
   getMembers() {
     this.members = this.ls.getDataFromStorage();
   }
+
+  getNumberOfMembers() {
+    this.membersCount = this.counter.getNumberOfMembers();
+  }  
 
   setBoxShadowColor(type) {
     switch (type) {
@@ -52,16 +60,21 @@ export class MemberListComponent implements OnInit {
     const uid = $event.uid;
     const type = $event.type;
     this.ls.activateDeactivateMember(type, uid);
+    this.getMembers();
+    this.getNumberOfMembers();
     this.isModalOpen = false;
   }
   
   deleteMember($event) {
     this.ls.deleteMember($event);
+    this.getMembers();
+    this.getNumberOfMembers();
     this.isModalOpen = false;
   }
 
   clearList() {
     this.ls.clearList();
+    this.getNumberOfMembers();
     this.getMembers();
   }
 }

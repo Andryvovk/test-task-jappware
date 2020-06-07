@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MemberModalComponent } from './member-list/member-modal/member-modal.component';
 import { ColorFontDirective } from './directives/color-font.directive';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
+import { TypeCounterComponent } from './member-list/type-counter/type-counter.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DragAndDropDirective } from './directives/drag-and-drop.directive';
     MemberListComponent,
     MemberModalComponent,
     ColorFontDirective,
-    DragAndDropDirective
+    DragAndDropDirective,
+    TypeCounterComponent
   ],
   imports: [
     BrowserModule,
