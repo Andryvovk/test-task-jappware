@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
     <span class="header">
         <h3>Member List</h3>
@@ -24,6 +24,33 @@
 </div>
 
 </div>
+<app-member-modal
+                 *ngIf="isModalOpen"
+                 [member]='member'
+                 (onClose)=closeModal()
+                 (onActivateDeactivate)=activateDeactivateMember($event)
+                 (onDelete)=deleteMember($event)></app-member-modal> -->
+  
+<div class="container">
+    <span class="header">
+        <h3>Member List</h3>
+        <button (click)="clearList()"
+                *ngIf="members.length !== 0">Clear List</button>
+    </span>
+    <div class="member-container">
+          <div class="members">
+            <div class="member"
+                 *ngFor='let member of members'
+                 [ngStyle]="{'box-shadow':'0 0 10px' + setBoxShadowColor(member.type)}"
+                 (click)="showModal(member)"
+                 appColorFont type={{member.type}}>
+                <p class="name">first name : {{member.firstName}}</p>
+                <p class="name">last name : {{member.lastName}}</p>
+             </div>
+          </div> 
+    </div>
+</div>
+
 <app-member-modal
                  *ngIf="isModalOpen"
                  [member]='member'
