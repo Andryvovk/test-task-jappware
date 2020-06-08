@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { Member } from 'src/interfaces/member-interface';
-import { element } from 'protractor';
+import { Member } from 'src/models/member-class';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +11,8 @@ export class UIDService {
 
   createUID(): number {
     if(!localStorage.getItem('memberList')) {
-      console.log('Im here')
       return 1;
     } else {
-      console.log('ls is not empty')
       let members: Member[] = this.ls.getDataFromStorage();
       let UIDArray: number[] = []
       members.forEach(element => {

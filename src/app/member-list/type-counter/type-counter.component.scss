@@ -1,7 +1,9 @@
+@import '../../../assets/style/style.scss';
+
 div {
     text-align: start;
     p {
-        font-size: 22px;
+        font-size: $medium-text;
         font-weight: bold;
     }
 }

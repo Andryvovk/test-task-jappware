@@ -4,7 +4,7 @@
     padding: 30px;
     text-align: center;
     .header {
-        font-size: 26px;
+        font-size: $large-text;
         color: $dark-green;
         button {
             width: 200px;
@@ -12,7 +12,7 @@
             border-radius: 5px;
             background-color: $dark-green;
             color: white;
-            font-size: 18px;
+            font-size: $small-text;
             outline: none;
             border: none;
             cursor: pointer;
@@ -28,10 +28,12 @@
         .member {
             padding: 4px;
             flex: 0 1 20%;
-            font-size: 18px;
+            font-size: $small-text;
+            font-weight: bold;
             margin: 8px;
             min-width: 140px;
             max-width: 250px;
+            cursor: pointer;
         }
     }
     app-type-counter {

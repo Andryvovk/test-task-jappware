@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Member } from 'src/interfaces/member-interface';
+import { Member } from 'src/models/member-class';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,6 @@ export class LocalStorageService {
 
   activateDeactivateMember(type, uid) {
     this.membersArr.forEach((el) => {
-      console.log(uid)
         if (el.uid === uid ) {
           console.log(el.type)
           switch (type) {

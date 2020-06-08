@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TypeCounter } from 'src/models/type-counter-class';
 
 @Component({
   selector: 'app-type-counter',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TypeCounterComponent implements OnInit {
   
-  @Input() membersCount = {};
+  @Input() typeCounter: TypeCounter = new TypeCounter();
 
   constructor() { }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Member } from 'src/interfaces/member-interface';
+import { Member } from 'src/models/member-class';
 
 @Component({
   selector: 'app-member-modal',

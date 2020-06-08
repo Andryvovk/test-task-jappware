@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Member } from 'src/interfaces/member-interface';
+import { Member } from 'src/models/member-class';
 import { LocalStorageService } from '../services/local-storage.service';
 import { UIDService } from '../services/uid.service';
 import { Router } from '@angular/router';
@@ -34,7 +34,6 @@ export class AddMemberComponent implements OnInit {
 
   addMember() {
     this.member.uid = this.uid.createUID();
-    console.log(this.uid.createUID())
     this.member.firstName = this.addMemberForm.value.firstName;
     this.member.lastName = this.addMemberForm.value.lastName;
     this.member.type = 'pending';

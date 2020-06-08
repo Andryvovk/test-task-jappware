@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../services/local-storage.service';
-import { Member } from 'src/interfaces/member-interface';
+import { Member } from 'src/models/member-class';
 import { TypeCounterService } from '../services/type-counter.service';
+import { TypeCounter } from 'src/models/type-counter-class';
 
 @Component({
   selector: 'app-member-list',
@@ -16,7 +17,7 @@ export class MemberListComponent implements OnInit {
   members: Member[] = [];
   member: Member;
   isModalOpen: boolean = false;
-  membersCount = {};
+  typeCounter: TypeCounter = new TypeCounter();
 
   ngOnInit(): void {
      this.getMembers();
@@ -28,7 +29,7 @@ export class MemberListComponent implements OnInit {
   }
 
   getNumberOfMembers() {
-    this.membersCount = this.counter.getNumberOfMembers();
+    this.typeCounter = this.counter.getNumberOfMembers();
   }  
 
   setBoxShadowColor(type) {

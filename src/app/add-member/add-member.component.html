@@ -1,15 +1,24 @@
-<div class="container"> 
+<div class="container">
+    <h3 class="title">Add Member</h3>  
     <form  [formGroup]="addMemberForm">
         <label for="firtName">First name</label>
         <input type="text"
                placeholder="firt name"
                name="firstName"
                formControlName="firstName">
+       <div class="error"
+            *ngIf="addMemberForm.controls['firstName'].invalid && addMemberForm.controls['firstName'].touched">
+              <p>first name required</p>
+       </div>             
         <label for="lastName">Last name</label>
         <input type="text"
                placeholder="last name"
                name="lastName"
                formControlName="lastName">
+        <div class="error"
+             *ngIf="addMemberForm.controls['lastName'].invalid && addMemberForm.controls['lastName'].touched">
+               <p>last name required</p>
+        </div>      
         <button class="button"
                [disabled]="addMemberForm.invalid"
                (click)="addMember()"
@@ -18,8 +27,9 @@
                >Save or drop here
                <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
               </button>
-              <div  class="files-list" *ngFor="let file of files;let i= index">
-                     <p> {{ file }} </p>
-                  </div>
+
+              <div *ngFor="let file of files;let i= index">
+                     <p>file {{ file }} was added</p>
+              </div>
     </form>
   </div>
