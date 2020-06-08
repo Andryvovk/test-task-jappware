@@ -25,7 +25,6 @@ export class LocalStorageService {
   activateDeactivateMember(type, uid) {
     this.membersArr.forEach((el) => {
         if (el.uid === uid ) {
-          console.log(el.type)
           switch (type) {
             case 'pending':
               el.type = 'activated'

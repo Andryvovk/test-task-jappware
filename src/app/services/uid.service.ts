@@ -19,7 +19,6 @@ export class UIDService {
         UIDArray.push(element.uid);
       });
       let result = this.findMaxUID(UIDArray)
-      console.log(result++)
       return result++;
     }
   }
